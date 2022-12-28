@@ -1,5 +1,5 @@
 
-#%% md
+#IRON AIR PROJECT
 #This is the IRON AIR project based in data collected from the WHOOP band.
 #%% md
 #IMPORT LIBRERIES
@@ -83,3 +83,35 @@ physiological_cycles.info()
 #%%
 sns.lineplot(x='month', y='Deep (SWS) duration (min)', data=physiological_cycles, ci=95)
 #%%
+sns.lineplot(x='Day Strain', y='Recovery score %', data=physiological_cycles, ci=95)
+#%% md
+#Esta correlacion indica que cuando el recovery score es mas alto el day strain es mas alto. Aunque el lineplot no es el mejor para este tipo de datos porque no se puede ver la distribución
+#%%
+sns.scatterplot(x='Day Strain', y='Recovery score %', data=physiological_cycles)
+#%% md
+#El scatterplot nos muestra que hay una relación lineal entre estas dos variables. y esta dice que cuanto mayor es el Day Strain, mayor es el Recovery score.
+#%%
+sns.jointplot(x='Day Strain', y='Recovery score %', data=physiological_cycles, kind='hex')
+#%% md
+#El jointplot nos muestra la distribución de los datos y la relación entre las dos variables.
+#En este caso, la distribución de los datos es normal y la relación es lineal.
+#Esto quiere decir que cuanto mayor es el Day Strain, mayor es el Recovery score.
+#Dsitribucion de datos normal quiere decir que la media y la mediana son iguales.
+#La ralcion lineal quiere decir que la pendiente es positiva.
+#%%
+sns.regplot(x='Day Strain', y='Recovery score %', data=physiological_cycles)
+#%% md
+#El regplot nos muestra la distribución de los datos y la relación entre las dos variables.
+#En este caso, la distribución de los datos es normal y la relación es lineal.
+#Esto quiere decir que cuanto mayor es el Day Strain, mayor es el Recovery score.
+#Distribucion de datos normal quiere decir que la media y la mediana son iguales y la relacion lineal quiere decir que la pendiente es positiva.
+
+#Los puntos que se encuentran en la parte superior derecha de la gráfica son los que tienen un Day Strain mayor y un Recovery score mayor.
+#Los puntos que se encuentran en la parte inferior izquierda de la gráfica son los que tienen un Day Strain menor y un Recovery score menor.
+#%%
+sns.heatmap(physiological_cycles.corr(), annot=True)
+#%% md
+#En el heatmap se puede ver la correlación entre las variables. En este caso, la correlación entre el Day Strain y el Recovery score es positiva.
+#Esto quiere decir que cuanto mayor es el Day Strain, mayor es el Recovery score.
+#Los colores que se encuentran en la parte superior derecha de la gráfica son los que tienen una correlación positiva.
+#Los colores que se encuentran en la parte inferior izquierda de la gráfica son los que tienen una correlación negativa.
